@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Techno Financials - UAE E-Invoicing</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/png" href="assets/logo.png">
+</head>
+<body>
+<!-- LOGIN SCREEN -->
+<div id="screen-login" class="screen active">
+  <div class="login-wrapper">
+    <div class="login-left">
+      <div class="login-brand">
+        <img src="assets/logo.png" alt="Techno Financials" class="login-logo-img">
+        <p class="login-subtitle">UAE E-Invoicing System</p>
+      </div>
+      <div class="login-card">
+        <h2>Welcome back</h2>
+        <p class="text-muted">Sign in to your account</p>
+        <form onsubmit="event.preventDefault(); showScreen('screen-otp')">
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="you@company.ae" value="admin@technofinancials.ae">
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" placeholder="Enter your password" value="password123">
+          </div>
+          <div class="form-row-between">
+            <label class="checkbox-label"><input type="checkbox" checked> Remember me</label>
+            <a href="#" class="link">Forgot password?</a>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Sign In</button>
+        </form>
+        <div class="login-divider"><span>or</span></div>
+        <button class="btn btn-secondary btn-full" onclick="showScreen('screen-register')">Create New Account</button>
+      </div>
+      <p class="login-footer">A product of <strong>3techno</strong> | PINT AE Compliant</p>
+    </div>
+    <div class="login-right">
+      <div class="login-hero">
+        <div class="hero-graphic">
+          <div class="hero-card hc1"><span class="badge badge-success">Accepted</span><span class="mono">INV-2026-001</span><span>AED 12,450.00</span></div>
+          <div class="hero-card hc2"><span class="badge badge-info">Validated</span><span class="mono">INV-2026-002</span><span>AED 8,320.50</span></div>
+          <div class="hero-card hc3"><span class="badge badge-accent">Delivered</span><span class="mono">INV-2026-003</span><span>AED 23,100.00</span></div>
+        </div>
+        <h2>UAE Digital E-Invoicing</h2>
+        <p>Fully compliant with PINT AE (Peppol Based) standard. Submit, validate, and track invoices through the 5-Corner Model.</p>
+        <div class="hero-features">
+          <div class="hero-feature"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#198A87"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg> PINT AE XML Format</div>
+          <div class="hero-feature"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#198A87"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg> 5-Corner Model</div>
+          <div class="hero-feature"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#198A87"/><path d="M6 10l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg> Ministry of Finance Compliant</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REGISTRATION SCREEN -->
+<div id="screen-register" class="screen">
+  <div class="login-wrapper">
+    <div class="login-left">
+      <div class="login-brand">
+        <img src="assets/logo.png" alt="Techno Financials" class="login-logo-img">
+        <p class="login-subtitle">Create your account</p>
+      </div>
+      <div class="login-card">
+        <h2>Register</h2>
+        <p class="text-muted">Set up your organization</p>
+        <form onsubmit="event.preventDefault(); showScreen('screen-otp')">
+          <div class="form-group">
+            <label>Company Name <span class="required">*</span></label>
+            <input type="text" placeholder="Legal trade license name">
+          </div>
+          <div class="form-row-2col">
+            <div class="form-group">
+              <label>Trade License Number <span class="required">*</span></label>
+              <input type="text" placeholder="UAE registered license">
+            </div>
+            <div class="form-group">
+              <label>TRN (Tax Registration No.) <span class="required">*</span></label>
+              <input type="text" placeholder="100XXXXXXXXX">
+            </div>
+          </div>
+          <div class="form-row-2col">
+            <div class="form-group">
+              <label>Email <span class="required">*</span></label>
+              <input type="email" placeholder="you@company.ae">
+            </div>
+            <div class="form-group">
+              <label>Mobile <span class="required">*</span></label>
+              <input type="tel" placeholder="+971 XX XXX XXXX">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Emirate <span class="required">*</span></label>
+            <select>
+              <option value="">Select Emirate</option>
+              <option>Abu Dhabi</option><option>Dubai</option><option>Sharjah</option>
+              <option>Ajman</option><option>Umm Al Quwain</option><option>Ras Al Khaimah</option><option>Fujairah</option>
+            </select>
+          </div>
+          <div class="form-row-2col">
+            <div class="form-group">
+              <label>Password <span class="required">*</span></label>
+              <input type="password" placeholder="Min 8 characters">
+            </div>
+            <div class="form-group">
+              <label>Confirm Password <span class="required">*</span></label>
+              <input type="password" placeholder="Confirm password">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Subscription Plan</label>
+            <div class="plan-cards">
+              <label class="plan-card">
+                <input type="radio" name="plan" value="basic">
+                <div class="plan-body"><strong>Basic</strong><span class="plan-price">AED 99/mo</span><span class="text-muted">Up to 100 invoices</span></div>
+              </label>
+              <label class="plan-card selected">
+                <input type="radio" name="plan" value="pro" checked>
+                <div class="plan-body"><strong>Professional</strong><span class="plan-price">AED 299/mo</span><span class="text-muted">Unlimited invoices</span></div>
+              </label>
+              <label class="plan-card">
+                <input type="radio" name="plan" value="enterprise">
+                <div class="plan-body"><strong>Enterprise</strong><span class="plan-price">Custom</span><span class="text-muted">Multi-entity</span></div>
+              </label>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+        </form>
+        <p class="login-footer" style="margin-top:16px">Already have an account? <a href="#" class="link" onclick="showScreen('screen-login')">Sign in</a></p>
+      </div>
+    </div>
+    <div class="login-right">
+      <div class="login-hero">
+        <h2>Join UAE's Leading E-Invoicing Platform</h2>
+        <p>Get compliant before the 2026 mandate. Techno Financials handles validation, submission, and archiving.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OTP SCREEN -->
+<div id="screen-otp" class="screen">
+  <div class="otp-wrapper">
+    <div class="login-card" style="max-width:420px">
+      <div style="text-align:center">
+        <div class="otp-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="12" width="32" height="24" rx="4" stroke="#1B3A6B" stroke-width="2.5" fill="none"/><path d="M8 16l16 10 16-10" stroke="#1B3A6B" stroke-width="2.5" fill="none"/></svg>
+        </div>
+        <h2>Verify Your Identity</h2>
+        <p class="text-muted">We sent a 6-digit code to<br><strong>admin@technofinancials.ae</strong></p>
+      </div>
+      <form onsubmit="event.preventDefault(); showScreen('screen-dashboard')">
+        <div class="otp-inputs">
+          <input type="text" maxlength="1" value="4" class="otp-digit" oninput="otpNext(this)">
+          <input type="text" maxlength="1" value="7" class="otp-digit" oninput="otpNext(this)">
+          <input type="text" maxlength="1" value="2" class="otp-digit" oninput="otpNext(this)">
+          <input type="text" maxlength="1" value="9" class="otp-digit" oninput="otpNext(this)">
+          <input type="text" maxlength="1" value="1" class="otp-digit" oninput="otpNext(this)">
+          <input type="text" maxlength="1" value="5" class="otp-digit">
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Verify & Continue</button>
+      </form>
+      <p class="text-center text-muted" style="margin-top:16px">Didn't receive code? <a href="#" class="link">Resend</a> in <strong>0:42</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN APP SHELL (Dashboard, Invoices, Master Data, etc.) -->
+<div id="screen-dashboard" class="screen">
+  <div class="app-shell">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <img src="assets/logo.png" alt="Techno Financials" class="sidebar-logo-img" style="height:26px; width:260px;">
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">MAIN</div>
+        <a class="nav-item active" onclick="switchPage('dashboard')"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="11" y="2" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="2" y="11" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="11" y="11" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/></svg><span>Dashboard</span></a>
+        <a class="nav-item" onclick="switchPage('invoices')"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 3h8l4 4v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1z" stroke="currentColor" stroke-width="1.5"/><path d="M12 3v4h4M7 10h6M7 13h4" stroke="currentColor" stroke-width="1.5"/></svg><span>Invoices</span><span class="nav-badge">24</span></a>
+        <a class="nav-item" onclick="switchPage('credit-notes')"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 3h8l4 4v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1z" stroke="currentColor" stroke-width="1.5"/><path d="M8 12l4-4M8 8l4 4" stroke="currentColor" stroke-width="1.5"/></svg><span>Credit Notes</span></a>
+        <div class="nav-section-label">MASTER DATA</div>
+        <a class="nav-item" onclick="switchPage('sellers')"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="3" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 10h6M10 7v6" stroke="currentColor" stroke-width="1.5"/></svg><span>Sellers</span></a>
+        <a class="nav-item" onclick="switchPage('buyers')"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M4 17c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="1.5"/></svg><span>Buyers</span></a>
+        <a class="nav-item" onclick="switchPage('items')"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l8 4v8l-8 4-8-4V6z" stroke="currentColor" stroke-width="1.5"/><path d="M10 10l8-4M10 10v8M10 10L2 6" stroke="currentColor" stroke-width="1.5"/></svg><span>Items</span></a>
+        <div class="nav-section-label">REPORTS</div>
+        <a class="nav-item" onclick="switchPage('reports')"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 17V8l4.5-5h5L17 8v9" stroke="currentColor" stroke-width="1.5"/><rect x="5" y="10" width="3" height="7" stroke="currentColor" stroke-width="1.5"/><rect x="9" y="7" width="3" height="10" stroke="currentColor" stroke-width="1.5"/><rect x="13" y="12" width="3" height="5" stroke="currentColor" stroke-width="1.5"/></svg><span>Analytics</span></a>
+        <a class="nav-item" onclick="switchPage('archive')"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="3" width="16" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/><path d="M3 7v9a1 1 0 001 1h12a1 1 0 001-1V7" stroke="currentColor" stroke-width="1.5"/><path d="M8 11h4" stroke="currentColor" stroke-width="1.5"/></svg><span>Archive</span></a>
+        <div class="nav-section-label">SETTINGS</div>
+        <a class="nav-item" onclick="switchPage('settings')"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v3M10 16v3M1 10h3M16 10h3M3.9 3.9l2.1 2.1M14 14l2.1 2.1M16.1 3.9l-2.1 2.1M6 14l-2.1 2.1" stroke="currentColor" stroke-width="1.5"/></svg><span>Settings</span></a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-avatar">FA</div>
+        <div class="user-info">
+          <span class="user-name">Fahad A.</span>
+          <span class="user-role">Admin</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-area">
+      <!-- TOP HEADER -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="btn-icon" onclick="toggleSidebar()"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+          <nav class="breadcrumb" id="breadcrumb"><span>Dashboard</span></nav>
+        </div>
+        <div class="header-right">
+          <div class="header-search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M11 11l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><input type="text" placeholder="Search... (Cmd+K)"><kbd>⌘K</kbd></div>
+          <button class="btn-icon notification-btn"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2a5 5 0 00-5 5v3l-2 2v1h14v-1l-2-2V7a5 5 0 00-5-5z" stroke="currentColor" stroke-width="1.5"/><path d="M8 16a2 2 0 004 0" stroke="currentColor" stroke-width="1.5"/></svg><span class="notif-dot"></span></button>
+          <button class="btn-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v1M8 13.5C8 12 9 11 10 11s2 1 2 2.5M10 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" stroke="currentColor" stroke-width="1.5"/></svg></button>
+          <div class="header-avatar" onclick="showScreen('screen-login')">FA</div>
+        </div>
+      </header>
+
+      <!-- PAGE CONTENT CONTAINER -->
+      <main class="page-content">
+
+        <!-- ========== DASHBOARD PAGE ========== -->
+        <div id="page-dashboard" class="page active">
+          <div class="page-header">
+            <div>
+              <h1>Dashboard</h1>
+              <p class="text-muted">Welcome back, Fahad. Here's your invoicing overview.</p>
+            </div>
+            <div class="page-actions">
+              <button class="btn btn-secondary" onclick="switchPage('reports')"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 14V5l3-3h6l3 3v9" stroke="currentColor" stroke-width="1.5"/></svg> View Reports</button>
+              <button class="btn btn-primary" onclick="switchPage('invoice-create')"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> New Invoice</button>
+            </div>
+          </div>
+
+          <!-- KPI CARDS -->
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-header"><span class="kpi-label">Total Invoices</span><div class="kpi-icon blue"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 3h8l4 4v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1z" stroke="currentColor" stroke-width="1.5"/></svg></div></div>
+              <div class="kpi-value">1,284</div>
+              <div class="kpi-trend up"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 12l5-5 2 2 5-5" stroke="#16A34A" stroke-width="1.5" fill="none"/><path d="M11 4h4v4" stroke="#16A34A" stroke-width="1.5" fill="none"/></svg> +12.5% from last month</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-header"><span class="kpi-label">Revenue (AED)</span><div class="kpi-icon teal"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2v16M6 6c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4 1.8-4 4 1.8 4 4 4" stroke="currentColor" stroke-width="1.5"/></svg></div></div>
+              <div class="kpi-value">4,827,350</div>
+              <div class="kpi-trend up"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 12l5-5 2 2 5-5" stroke="#16A34A" stroke-width="1.5" fill="none"/><path d="M11 4h4v4" stroke="#16A34A" stroke-width="1.5" fill="none"/></svg> +8.3% from last month</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-header"><span class="kpi-label">Pending Validation</span><div class="kpi-icon amber"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v4l3 2" stroke="currentColor" stroke-width="1.5"/></svg></div></div>
+              <div class="kpi-value">37</div>
+              <div class="kpi-trend down"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 4l5 5 2-2 5 5" stroke="#DC2626" stroke-width="1.5" fill="none"/><path d="M11 12h4v-4" stroke="#DC2626" stroke-width="1.5" fill="none"/></svg> -5.2% from last month</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-header"><span class="kpi-label">Acceptance Rate</span><div class="kpi-icon green"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="1.5"/></svg></div></div>
+              <div class="kpi-value">96.4%</div>
+              <div class="kpi-trend up"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 12l5-5 2 2 5-5" stroke="#16A34A" stroke-width="1.5" fill="none"/><path d="M11 4h4v4" stroke="#16A34A" stroke-width="1.5" fill="none"/></svg> +1.2% from last month</div>
+            </div>
+          </div>
+
+          <!-- CHARTS ROW -->
+          <div class="charts-grid">
+            <div class="card chart-card wide">
+              <div class="card-header"><h3>Invoice Volume Trend</h3><div class="chart-period"><button class="chip active">6M</button><button class="chip">1Y</button><button class="chip">All</button></div></div>
+              <div class="chart-area">
+                <svg viewBox="0 0 600 200" class="line-chart">
+                  <defs><linearGradient id="grad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1B3A6B" stop-opacity="0.15"/><stop offset="100%" stop-color="#1B3A6B" stop-opacity="0"/></linearGradient></defs>
+                  <g class="grid-lines"><line x1="50" y1="20" x2="580" y2="20" stroke="#EDEDF0" stroke-width="1"/><line x1="50" y1="60" x2="580" y2="60" stroke="#EDEDF0" stroke-width="1"/><line x1="50" y1="100" x2="580" y2="100" stroke="#EDEDF0" stroke-width="1"/><line x1="50" y1="140" x2="580" y2="140" stroke="#EDEDF0" stroke-width="1"/><line x1="50" y1="180" x2="580" y2="180" stroke="#EDEDF0" stroke-width="1"/></g>
+                  <g class="axis-labels" fill="#5C5C65" font-size="11" font-family="Inter"><text x="45" y="24" text-anchor="end">300</text><text x="45" y="64" text-anchor="end">225</text><text x="45" y="104" text-anchor="end">150</text><text x="45" y="144" text-anchor="end">75</text><text x="45" y="184" text-anchor="end">0</text><text x="100" y="198" text-anchor="middle">Oct</text><text x="200" y="198" text-anchor="middle">Nov</text><text x="300" y="198" text-anchor="middle">Dec</text><text x="400" y="198" text-anchor="middle">Jan</text><text x="500" y="198" text-anchor="middle">Feb</text><text x="580" y="198" text-anchor="middle">Mar</text></g>
+                  <path d="M100,120 L200,95 L300,105 L400,70 L500,55 L580,40" fill="url(#grad)" stroke="none" opacity="0.5"/>
+                  <path d="M100,120 L200,95 L300,105 L400,70 L500,55 L580,40" fill="none" stroke="#1B3A6B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <g class="dots"><circle cx="100" cy="120" r="4" fill="#1B3A6B"/><circle cx="200" cy="95" r="4" fill="#1B3A6B"/><circle cx="300" cy="105" r="4" fill="#1B3A6B"/><circle cx="400" cy="70" r="4" fill="#1B3A6B"/><circle cx="500" cy="55" r="4" fill="#1B3A6B"/><circle cx="580" cy="40" r="5" fill="#fff" stroke="#1B3A6B" stroke-width="2.5"/></g>
+                  <path d="M100,140 L200,128 L300,135 L400,110 L500,100 L580,85" fill="none" stroke="#198A87" stroke-width="2" stroke-dasharray="6 3" stroke-linecap="round"/>
+                </svg>
+                <div class="chart-legend"><span class="legend-item"><span class="legend-dot" style="background:#1B3A6B"></span>Invoices Sent</span><span class="legend-item"><span class="legend-dot" style="background:#198A87"></span>Invoices Accepted</span></div>
+              </div>
+            </div>
+            <div class="card chart-card">
+              <div class="card-header"><h3>Status Distribution</h3></div>
+              <div class="chart-area donut-area">
+                <svg viewBox="0 0 200 200" class="donut-chart">
+                  <circle cx="100" cy="100" r="70" fill="none" stroke="#EDEDF0" stroke-width="28"/>
+                  <circle cx="100" cy="100" r="70" fill="none" stroke="#16A34A" stroke-width="28" stroke-dasharray="270 440" stroke-dashoffset="0" transform="rotate(-90 100 100)"/>
+                  <circle cx="100" cy="100" r="70" fill="none" stroke="#198A87" stroke-width="28" stroke-dasharray="66 440" stroke-dashoffset="-270" transform="rotate(-90 100 100)"/>
+                  <circle cx="100" cy="100" r="70" fill="none" stroke="#1B3A6B" stroke-width="28" stroke-dasharray="44 440" stroke-dashoffset="-336" transform="rotate(-90 100 100)"/>
+                  <circle cx="100" cy="100" r="70" fill="none" stroke="#D97706" stroke-width="28" stroke-dasharray="33 440" stroke-dashoffset="-380" transform="rotate(-90 100 100)"/>
+                  <circle cx="100" cy="100" r="70" fill="none" stroke="#DC2626" stroke-width="28" stroke-dasharray="22 440" stroke-dashoffset="-413" transform="rotate(-90 100 100)"/>
+                  <text x="100" y="95" text-anchor="middle" fill="#1A1A1E" font-size="24" font-weight="700" font-family="Inter">1,284</text>
+                  <text x="100" y="115" text-anchor="middle" fill="#5C5C65" font-size="11" font-family="Inter">Total Invoices</text>
+                </svg>
+                <div class="donut-legend">
+                  <div class="legend-row"><span class="legend-dot" style="background:#16A34A"></span>Accepted <strong>784</strong></div>
+                  <div class="legend-row"><span class="legend-dot" style="background:#198A87"></span>Delivered <strong>192</strong></div>
+                  <div class="legend-row"><span class="legend-dot" style="background:#1B3A6B"></span>Submitted <strong>128</strong></div>
+                  <div class="legend-row"><span class="legend-dot" style="background:#D97706"></span>Pending <strong>96</strong></div>
+                  <div class="legend-row"><span class="legend-dot" style="background:#DC2626"></span>Rejected <strong>84</strong></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RECENT INVOICES TABLE -->
+          <div class="card">
+            <div class="card-header">
+              <h3>Recent Invoices</h3>
+              <button class="btn btn-ghost" onclick="switchPage('invoices')">View All <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5"/></svg></button>
+            </div>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Invoice #</th><th>Date</th><th>Buyer</th><th>Type</th><th class="text-right">Amount (AED)</th><th>Status</th><th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td class="mono">INV-2026-001284</td><td>15 Mar 2026</td><td>Emirates Trading LLC</td><td>Standard Tax</td><td class="text-right mono">45,230.00</td><td><span class="badge badge-success">Accepted</span></td><td><button class="btn-icon-sm">...</button></td></tr>
+                  <tr><td class="mono">INV-2026-001283</td><td>15 Mar 2026</td><td>Al Futtaim Group</td><td>Standard Tax</td><td class="text-right mono">128,750.50</td><td><span class="badge badge-accent">Delivered</span></td><td><button class="btn-icon-sm">...</button></td></tr>
+                  <tr><td class="mono">INV-2026-001282</td><td>14 Mar 2026</td><td>Dubai Holding</td><td>Zero-Rated</td><td class="text-right mono">23,100.00</td><td><span class="badge badge-primary">Submitted</span></td><td><button class="btn-icon-sm">...</button></td></tr>
+                  <tr><td class="mono">INV-2026-001281</td><td>14 Mar 2026</td><td>Emaar Properties</td><td>Standard Tax</td><td class="text-right mono">312,500.00</td><td><span class="badge badge-warning">Pending</span></td><td><button class="btn-icon-sm">...</button></td></tr>
+                  <tr><td class="mono">INV-2026-001280</td><td>13 Mar 2026</td><td>ADNOC Distribution</td><td>Reverse Charge</td><td class="text-right mono">67,890.25</td><td><span class="badge badge-success">Accepted</span></td><td><button class="btn-icon-sm">...</button></td></tr>
+                  <tr><td class="mono">INV-2026-001279</td><td>13 Mar 2026</td><td>Majid Al Futtaim</td><td>Export</td><td class="text-right mono">89,440.00</td><td><span class="badge badge-error">Rejected</span></td><td><button class="btn-icon-sm">...</button></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== INVOICES LIST PAGE ========== -->
+        <div id="page-invoices" class="page">
+          <div class="page-header">
+            <div><h1>Invoices</h1><p class="text-muted">Manage all your e-invoices</p></div>
+            <div class="page-actions">
+              <button class="btn btn-secondary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 10v3h12v-3M8 2v8M5 7l3 3 3-3" stroke="currentColor" stroke-width="1.5"/></svg> Export</button>
+              <button class="btn btn-primary" onclick="switchPage('invoice-create')"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> New Invoice</button>
+            </div>
+          </div>
+          <!-- FILTERS -->
+          <div class="filter-bar">
+            <div class="search-input"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M11 11l3 3" stroke="currentColor" stroke-width="1.5"/></svg><input type="text" placeholder="Search invoices..."></div>
+            <select class="filter-select"><option>All Statuses</option><option>Draft</option><option>Pending</option><option>Validated</option><option>Submitted</option><option>Delivered</option><option>Accepted</option><option>Rejected</option></select>
+            <select class="filter-select"><option>All Types</option><option>Standard Tax</option><option>Reverse Charge</option><option>Zero-Rated</option><option>Export</option><option>Credit Note</option></select>
+            <input type="date" class="filter-date" value="2026-03-01">
+            <span class="filter-to">to</span>
+            <input type="date" class="filter-date" value="2026-03-16">
+          </div>
+          <div class="active-filters"><span class="chip removable">Status: All <button>&times;</button></span><span class="chip removable">Mar 1 - Mar 16, 2026 <button>&times;</button></span></div>
+
+          <div class="card">
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr><th><input type="checkbox"></th><th>Invoice # <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 2v8M3 7l3 3 3-3" stroke="currentColor" stroke-width="1.2"/></svg></th><th>Date</th><th>Buyer</th><th>Type</th><th class="text-right">Subtotal</th><th class="text-right">VAT</th><th class="text-right">Total (AED)</th><th>Status</th><th>Actions</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><input type="checkbox"></td><td class="mono">INV-2026-001284</td><td>15 Mar 2026</td><td>Emirates Trading LLC</td><td>Standard Tax</td><td class="text-right mono">42,600.00</td><td class="text-right mono">2,130.00</td><td class="text-right mono"><strong>45,230.00</strong></td><td><span class="badge badge-success">Accepted</span></td><td><div class="action-btns"><button class="btn-icon-sm" title="View">👁</button><button class="btn-icon-sm" title="Download">⬇</button><button class="btn-icon-sm" title="More">...</button></div></td></tr>
+                  <tr><td><input type="checkbox"></td><td class="mono">INV-2026-001283</td><td>15 Mar 2026</td><td>Al Futtaim Group</td><td>Standard Tax</td><td class="text-right mono">121,667.14</td><td class="text-right mono">7,083.36</td><td class="text-right mono"><strong>128,750.50</strong></td><td><span class="badge badge-accent">Delivered</span></td><td><div class="action-btns"><button class="btn-icon-sm" title="View">👁</button><button class="btn-icon-sm" title="Download">⬇</button><button class="btn-icon-sm" title="More">...</button></div></td></tr>
+                  <tr><td><input type="checkbox"></td><td class="mono">INV-2026-001282</td><td>14 Mar 2026</td><td>Dubai Holding</td><td>Zero-Rated</td><td class="text-right mono">23,100.00</td><td class="text-right mono">0.00</td><td class="text-right mono"><strong>23,100.00</strong></td><td><span class="badge badge-primary">Submitted</span></td><td><div class="action-btns"><button class="btn-icon-sm" title="View">👁</button><button class="btn-icon-sm" title="Download">⬇</button><button class="btn-icon-sm" title="More">...</button></div></td></tr>
+                  <tr><td><input type="checkbox"></td><td class="mono">INV-2026-001281</td><td>14 Mar 2026</td><td>Emaar Properties</td><td>Standard Tax</td><td class="text-right mono">295,238.10</td><td class="text-right mono">17,261.90</td><td class="text-right mono"><strong>312,500.00</strong></td><td><span class="badge badge-warning">Pending</span></td><td><div class="action-btns"><button class="btn-icon-sm" title="View">👁</button><button class="btn-icon-sm" title="Download">⬇</button><button class="btn-icon-sm" title="More">...</button></div></td></tr>
+                  <tr><td><input type="checkbox"></td><td class="mono">INV-2026-001280</td><td>13 Mar 2026</td><td>ADNOC Distribution</td><td>Reverse Charge</td><td class="text-right mono">64,657.38</td><td class="text-right mono">3,232.87</td><td class="text-right mono"><strong>67,890.25</strong></td><td><span class="badge badge-success">Accepted</span></td><td><div class="action-btns"><button class="btn-icon-sm" title="View">👁</button><button class="btn-icon-sm" title="Download">⬇</button><button class="btn-icon-sm" title="More">...</button></div></td></tr>
+                  <tr><td><input type="checkbox"></td><td class="mono">INV-2026-001279</td><td>13 Mar 2026</td><td>Majid Al Futtaim</td><td>Export</td><td class="text-right mono">89,440.00</td><td class="text-right mono">0.00</td><td class="text-right mono"><strong>89,440.00</strong></td><td><span class="badge badge-error">Rejected</span></td><td><div class="action-btns"><button class="btn-icon-sm" title="View">👁</button><button class="btn-icon-sm" title="Download">⬇</button><button class="btn-icon-sm" title="More">...</button></div></td></tr>
+                  <tr><td><input type="checkbox"></td><td class="mono">INV-2026-001278</td><td>12 Mar 2026</td><td>Etisalat Group</td><td>Standard Tax</td><td class="text-right mono">54,320.00</td><td class="text-right mono">2,716.00</td><td class="text-right mono"><strong>57,036.00</strong></td><td><span class="badge badge-success">Accepted</span></td><td><div class="action-btns"><button class="btn-icon-sm" title="View">👁</button><button class="btn-icon-sm" title="Download">⬇</button><button class="btn-icon-sm" title="More">...</button></div></td></tr>
+                  <tr><td><input type="checkbox"></td><td class="mono">INV-2026-001277</td><td>12 Mar 2026</td><td>DP World</td><td>Deemed Supply</td><td class="text-right mono">178,500.00</td><td class="text-right mono">8,925.00</td><td class="text-right mono"><strong>187,425.00</strong></td><td><span class="badge badge-success">Accepted</span></td><td><div class="action-btns"><button class="btn-icon-sm" title="View">👁</button><button class="btn-icon-sm" title="Download">⬇</button><button class="btn-icon-sm" title="More">...</button></div></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="table-footer">
+              <span class="text-muted">Showing 1-8 of 1,284 invoices</span>
+              <div class="pagination">
+                <select class="page-size"><option>25 per page</option><option>50 per page</option><option>100 per page</option></select>
+                <button class="btn-icon-sm" disabled>&laquo;</button>
+                <button class="btn-icon-sm" disabled>&lsaquo;</button>
+                <button class="btn-page active">1</button>
+                <button class="btn-page">2</button>
+                <button class="btn-page">3</button>
+                <span>...</span>
+                <button class="btn-page">52</button>
+                <button class="btn-icon-sm">&rsaquo;</button>
+                <button class="btn-icon-sm">&raquo;</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== CREATE INVOICE PAGE (Single Page) ========== -->
+        <div id="page-invoice-create" class="page">
+          <div class="page-header sticky-header">
+            <div><h1>Create Invoice</h1><p class="text-muted">New PINT AE compliant e-invoice &mdash; <span class="mono">INV-2026-001285</span> <span class="badge badge-neutral">Draft</span></p></div>
+            <div class="page-actions">
+              <button class="btn btn-ghost" onclick="switchPage('invoices')">Cancel</button>
+              <button class="btn btn-secondary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 3h8l2 2v9a1 1 0 01-1 1H3a1 1 0 01-1-1V4a1 1 0 011-1z" stroke="currentColor" stroke-width="1.5"/><path d="M6 3v4h4V3" stroke="currentColor" stroke-width="1.5"/></svg> Save Draft</button>
+              <button class="btn btn-primary" onclick="switchPage('invoices')"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Submit for Validation</button>
+            </div>
+          </div>
+
+          <!-- SECTION NAV (scroll spy) -->
+          <div class="section-nav">
+            <a href="#sec-details" class="section-nav-item active" onclick="scrollToSection('sec-details', this)">Invoice Details</a>
+            <a href="#sec-seller" class="section-nav-item" onclick="scrollToSection('sec-seller', this)">Seller</a>
+            <a href="#sec-buyer" class="section-nav-item" onclick="scrollToSection('sec-buyer', this)">Buyer</a>
+            <a href="#sec-items" class="section-nav-item" onclick="scrollToSection('sec-items', this)">Line Items</a>
+            <a href="#sec-tax" class="section-nav-item" onclick="scrollToSection('sec-tax', this)">Tax &amp; Totals</a>
+            <a href="#sec-notes" class="section-nav-item" onclick="scrollToSection('sec-notes', this)">Notes</a>
+          </div>
+
+          <div class="invoice-form-layout">
+            <!-- LEFT: Main form -->
+            <div class="invoice-form-main">
+
+              <!-- Section 1: Invoice Details -->
+              <div class="card section-card" id="sec-details">
+                <div class="section-title"><span class="section-num">1</span><h3>Invoice Details</h3></div>
+                <div class="form-grid-3">
+                  <div class="form-group"><label>Invoice Type <span class="required">*</span></label>
+                    <select><option>Standard Tax Invoice (388)</option><option>Credit Note (381)</option><option>Debit Note (383)</option></select>
+                  </div>
+                  <div class="form-group"><label>Sub-Type <span class="required">*</span></label>
+                    <select><option>Standard Tax</option><option>Reverse Charge</option><option>Zero-Rated</option><option>Deemed Supply</option><option>Export</option><option>E-commerce</option><option>Free Trade Zone</option><option>Margin Scheme</option><option>Self-Billing</option><option>Summary Tax</option><option>Continuous Supply</option></select>
+                  </div>
+                  <div class="form-group"><label>Invoice Number</label><input type="text" value="INV-2026-001285" class="mono" readonly></div>
+                  <div class="form-group"><label>Issue Date <span class="required">*</span></label><input type="date" value="2026-03-16"></div>
+                  <div class="form-group"><label>Due Date</label><input type="date" value="2026-04-15"></div>
+                  <div class="form-group"><label>Currency <span class="required">*</span></label>
+                    <select><option>AED - UAE Dirham</option><option>USD - US Dollar</option><option>EUR - Euro</option><option>GBP - British Pound</option><option>SAR - Saudi Riyal</option></select>
+                  </div>
+                  <div class="form-group"><label>PO Reference</label><input type="text" placeholder="PO-XXXX-XXXXX"></div>
+                  <div class="form-group"><label>Payment Terms</label>
+                    <select><option>Net 30</option><option>Net 15</option><option>Net 60</option><option>Due on Receipt</option></select>
+                  </div>
+                  <div class="form-group"><label>Delivery Date</label><input type="date"></div>
+                </div>
+              </div>
+
+              <!-- Section 2 & 3: Seller and Buyer side by side -->
+              <div class="two-col-cards">
+                <!-- Seller -->
+                <div class="card section-card" id="sec-seller">
+                  <div class="section-title"><span class="section-num">2</span><h3>Seller (From)</h3><button class="btn btn-ghost btn-sm" style="margin-left:auto"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1v12" stroke="currentColor" stroke-width="1.5"/></svg> Change</button></div>
+                  <div class="party-quick-info">
+                    <div class="party-avatar seller">TF</div>
+                    <div>
+                      <strong>Techno Financials LLC</strong>
+                      <span class="mono party-trn">TRN: 100234567890003</span>
+                    </div>
+                  </div>
+                  <div class="form-grid-2">
+                    <div class="form-group"><label>Name <span class="required">*</span></label><input type="text" value="Techno Financials LLC"></div>
+                    <div class="form-group"><label>TRN <span class="required">*</span></label><input type="text" value="100234567890003" class="mono"></div>
+                    <div class="form-group"><label>Registration #</label><input type="text" value="DXB-123456"></div>
+                    <div class="form-group"><label>Email</label><input type="email" value="invoicing@technofinancials.ae"></div>
+                    <div class="form-group full-width"><label>Address <span class="required">*</span></label><input type="text" value="Business Bay, Tower A, Floor 12"></div>
+                    <div class="form-group"><label>City</label><input type="text" value="Dubai"></div>
+                    <div class="form-group"><label>Emirate</label><select><option selected>Dubai</option></select></div>
+                    <div class="form-group"><label>Postal Code</label><input type="text" value="12345"></div>
+                    <div class="form-group"><label>Country</label><select><option selected>AE - UAE</option></select></div>
+                  </div>
+                </div>
+
+                <!-- Buyer -->
+                <div class="card section-card" id="sec-buyer">
+                  <div class="section-title"><span class="section-num">3</span><h3>Buyer (To)</h3><button class="btn btn-ghost btn-sm" style="margin-left:auto"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="5" r="3" stroke="currentColor" stroke-width="1.3"/><path d="M2 12c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="currentColor" stroke-width="1.3"/></svg> Select Buyer</button></div>
+                  <div class="party-quick-info">
+                    <div class="party-avatar buyer">ET</div>
+                    <div>
+                      <strong>Emirates Trading LLC</strong>
+                      <span class="mono party-trn">TRN: 100987654321003</span>
+                    </div>
+                  </div>
+                  <div class="form-grid-2">
+                    <div class="form-group"><label>Name <span class="required">*</span></label><input type="text" value="Emirates Trading LLC"></div>
+                    <div class="form-group"><label>TRN <span class="required">*</span></label><input type="text" value="100987654321003" class="mono"></div>
+                    <div class="form-group"><label>Email</label><input type="email" value="ap@emirates-trading.ae"></div>
+                    <div class="form-group"><label>Phone</label><input type="tel" value="+971 4 987 6543"></div>
+                    <div class="form-group full-width"><label>Address <span class="required">*</span></label><input type="text" value="DIFC, Gate Village 3, Floor 8"></div>
+                    <div class="form-group"><label>City</label><input type="text" value="Dubai"></div>
+                    <div class="form-group"><label>Emirate</label><select><option selected>Dubai</option></select></div>
+                    <div class="form-group"><label>Postal Code</label><input type="text" value="50688"></div>
+                    <div class="form-group"><label>Country</label><select><option selected>AE - UAE</option></select></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Section 4: Line Items -->
+              <div class="card section-card" id="sec-items">
+                <div class="section-title"><span class="section-num">4</span><h3>Line Items</h3><button class="btn btn-accent btn-sm" style="margin-left:auto"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Add Item</button></div>
+                <div class="table-wrapper">
+                  <table class="line-items-table">
+                    <thead><tr><th style="width:36px">#</th><th>Item / Description</th><th style="width:70px">Qty</th><th style="width:80px">Unit</th><th style="width:120px" class="text-right">Unit Price (AED)</th><th style="width:100px" class="text-right">Discount</th><th style="width:75px">VAT %</th><th style="width:120px" class="text-right">Line Total (AED)</th><th style="width:36px"></th></tr></thead>
+                    <tbody>
+                      <tr>
+                        <td class="row-num">1</td>
+                        <td><input type="text" value="Cloud ERP License - Annual" class="table-input full"></td>
+                        <td><input type="number" value="5" class="table-input full text-right"></td>
+                        <td><select class="table-input full"><option>Unit</option><option selected>License</option><option>Hour</option><option>Kg</option><option>Meter</option></select></td>
+                        <td><input type="text" value="12,000.00" class="table-input full mono text-right"></td>
+                        <td><input type="text" value="0.00" class="table-input full mono text-right"></td>
+                        <td><select class="table-input full"><option selected>5%</option><option>0%</option></select></td>
+                        <td class="text-right mono line-total"><strong>63,000.00</strong></td>
+                        <td><button class="btn-icon-sm text-error" title="Remove">✕</button></td>
+                      </tr>
+                      <tr>
+                        <td class="row-num">2</td>
+                        <td><input type="text" value="Implementation Services" class="table-input full"></td>
+                        <td><input type="number" value="120" class="table-input full text-right"></td>
+                        <td><select class="table-input full"><option>Unit</option><option>License</option><option selected>Hour</option><option>Kg</option><option>Meter</option></select></td>
+                        <td><input type="text" value="450.00" class="table-input full mono text-right"></td>
+                        <td><input type="text" value="2,700.00" class="table-input full mono text-right"></td>
+                        <td><select class="table-input full"><option selected>5%</option><option>0%</option></select></td>
+                        <td class="text-right mono line-total"><strong>53,865.00</strong></td>
+                        <td><button class="btn-icon-sm text-error" title="Remove">✕</button></td>
+                      </tr>
+                      <tr>
+                        <td class="row-num">3</td>
+                        <td><input type="text" value="Annual Support & Maintenance" class="table-input full"></td>
+                        <td><input type="number" value="1" class="table-input full text-right"></td>
+                        <td><select class="table-input full"><option selected>Unit</option></select></td>
+                        <td><input type="text" value="8,500.00" class="table-input full mono text-right"></td>
+                        <td><input type="text" value="0.00" class="table-input full mono text-right"></td>
+                        <td><select class="table-input full"><option selected>5%</option><option>0%</option></select></td>
+                        <td class="text-right mono line-total"><strong>8,925.00</strong></td>
+                        <td><button class="btn-icon-sm text-error" title="Remove">✕</button></td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr><td colspan="7" class="text-right">Subtotal</td><td class="text-right mono"><strong>125,790.00</strong></td><td></td></tr>
+                    </tfoot>
+                  </table>
+                </div>
+                <button class="btn btn-ghost btn-sm" style="margin-top:8px"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Add another line item</button>
+              </div>
+
+              <!-- Section 5: Notes & Attachments -->
+              <div class="card section-card" id="sec-notes">
+                <div class="section-title"><span class="section-num">5</span><h3>Notes &amp; Attachments</h3></div>
+                <div class="form-grid-2">
+                  <div class="form-group full-width"><label>Invoice Notes</label><textarea placeholder="Payment terms, special instructions, or additional notes for the buyer..." rows="3">Payment due within 30 days. Bank transfer to Emirates NBD, Account: 1234567890.</textarea></div>
+                  <div class="form-group full-width">
+                    <label>Attachments</label>
+                    <div class="file-drop-zone">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12l7-7 7 7" stroke="#9C9CA5" stroke-width="1.5" stroke-linecap="round"/></svg>
+                      <span>Drag files here or <a class="link">browse</a></span>
+                      <span class="text-muted">PDF, XML, images up to 10MB</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- RIGHT: Live Summary Sidebar -->
+            <div class="invoice-form-sidebar" id="sec-tax">
+              <div class="card summary-card sticky-summary">
+                <h3>Invoice Summary</h3>
+                <div class="summary-badge"><span class="badge badge-neutral">Draft</span></div>
+
+                <div class="summary-parties">
+                  <div class="summary-party">
+                    <span class="text-muted">From</span>
+                    <strong>Techno Financials LLC</strong>
+                    <span class="mono" style="font-size:0.75rem">TRN: 100234567890003</span>
+                  </div>
+                  <div class="summary-arrow"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8h8M9 5l3 3-3 3" stroke="#9C9CA5" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+                  <div class="summary-party">
+                    <span class="text-muted">To</span>
+                    <strong>Emirates Trading LLC</strong>
+                    <span class="mono" style="font-size:0.75rem">TRN: 100987654321003</span>
+                  </div>
+                </div>
+
+                <div class="summary-divider"></div>
+
+                <div class="summary-meta">
+                  <div class="summary-meta-row"><span class="text-muted">Invoice #</span><span class="mono">INV-2026-001285</span></div>
+                  <div class="summary-meta-row"><span class="text-muted">Issue Date</span><span>16 Mar 2026</span></div>
+                  <div class="summary-meta-row"><span class="text-muted">Due Date</span><span>15 Apr 2026</span></div>
+                  <div class="summary-meta-row"><span class="text-muted">Type</span><span>Standard Tax</span></div>
+                  <div class="summary-meta-row"><span class="text-muted">Items</span><span>3 line items</span></div>
+                </div>
+
+                <div class="summary-divider"></div>
+
+                <h4>Tax Breakdown</h4>
+                <div class="tax-breakdown">
+                  <div class="tax-row"><span>Standard Rate (S) - 5%</span><span class="mono">5,919.50</span></div>
+                  <div class="tax-row"><span>Zero-Rated (Z) - 0%</span><span class="mono">0.00</span></div>
+                </div>
+
+                <div class="summary-divider"></div>
+
+                <div class="summary-totals">
+                  <div class="summary-row"><span>Subtotal</span><span class="mono">AED 128,490.00</span></div>
+                  <div class="summary-row"><span>Discount</span><span class="mono text-error">(AED 2,700.00)</span></div>
+                  <div class="summary-row"><span>Net Amount</span><span class="mono">AED 125,790.00</span></div>
+                  <div class="summary-row"><span>VAT (5%)</span><span class="mono">AED 5,919.50</span></div>
+                  <div class="summary-row total"><span>Total Payable</span><span class="mono">AED 131,709.50</span></div>
+                </div>
+
+                <div class="summary-divider"></div>
+
+                <!-- Validation Status -->
+                <div class="validation-mini">
+                  <div class="val-item pass"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#16A34A" stroke-width="1.3"/><path d="M4.5 7l2 2 3-3" stroke="#16A34A" stroke-width="1.3"/></svg> Syntax check</div>
+                  <div class="val-item pass"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#16A34A" stroke-width="1.3"/><path d="M4.5 7l2 2 3-3" stroke="#16A34A" stroke-width="1.3"/></svg> Business rules</div>
+                  <div class="val-item pass"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#16A34A" stroke-width="1.3"/><path d="M4.5 7l2 2 3-3" stroke="#16A34A" stroke-width="1.3"/></svg> Tax calculation</div>
+                  <div class="val-item pass"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#16A34A" stroke-width="1.3"/><path d="M4.5 7l2 2 3-3" stroke="#16A34A" stroke-width="1.3"/></svg> PINT AE schema</div>
+                  <div class="val-item pass"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#16A34A" stroke-width="1.3"/><path d="M4.5 7l2 2 3-3" stroke="#16A34A" stroke-width="1.3"/></svg> TRN verification</div>
+                </div>
+                <div class="validation-banner success" style="margin:12px 0 0; padding:10px 12px">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#16A34A" stroke-width="1.3"/><path d="M5.5 8l2 2 3-3" stroke="#16A34A" stroke-width="1.3"/></svg>
+                  <span style="font-size:0.8rem"><strong>Pre-validation passed</strong> &mdash; Ready to submit</span>
+                </div>
+
+                <div class="summary-actions">
+                  <button class="btn btn-secondary btn-full">Save Draft</button>
+                  <button class="btn btn-primary btn-full" onclick="switchPage('invoices')"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Submit for Validation</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== SELLERS PAGE ========== -->
+        <div id="page-sellers" class="page">
+          <div class="page-header">
+            <div><h1>Sellers</h1><p class="text-muted">Manage seller master data</p></div>
+            <div class="page-actions"><button class="btn btn-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Add Seller</button></div>
+          </div>
+          <div class="card">
+            <div class="table-wrapper">
+              <table>
+                <thead><tr><th>Seller Name</th><th>TRN</th><th>Email</th><th>Emirate</th><th>Invoices</th><th>Status</th><th>Actions</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Techno Financials LLC</strong></td><td class="mono">100234567890003</td><td>invoicing@technofinancials.ae</td><td>Dubai</td><td class="mono">1,284</td><td><span class="badge badge-success">Active</span></td><td><div class="action-btns"><button class="btn-icon-sm">✏️</button><button class="btn-icon-sm">👁</button></div></td></tr>
+                  <tr><td><strong>3Techno Solutions</strong></td><td class="mono">100234567890004</td><td>info@3techno.com</td><td>Abu Dhabi</td><td class="mono">456</td><td><span class="badge badge-success">Active</span></td><td><div class="action-btns"><button class="btn-icon-sm">✏️</button><button class="btn-icon-sm">👁</button></div></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== BUYERS PAGE ========== -->
+        <div id="page-buyers" class="page">
+          <div class="page-header">
+            <div><h1>Buyers</h1><p class="text-muted">Manage buyer master data</p></div>
+            <div class="page-actions"><button class="btn btn-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Add Buyer</button></div>
+          </div>
+          <div class="card">
+            <div class="table-wrapper">
+              <table>
+                <thead><tr><th>Buyer Name</th><th>TRN</th><th>Email</th><th>City</th><th>Invoices</th><th>Status</th><th>Actions</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Emirates Trading LLC</strong></td><td class="mono">100987654321003</td><td>ap@emirates-trading.ae</td><td>Dubai</td><td class="mono">142</td><td><span class="badge badge-success">Active</span></td><td><div class="action-btns"><button class="btn-icon-sm">✏️</button><button class="btn-icon-sm">👁</button></div></td></tr>
+                  <tr><td><strong>Al Futtaim Group</strong></td><td class="mono">100876543210003</td><td>finance@alfuttaim.ae</td><td>Dubai</td><td class="mono">89</td><td><span class="badge badge-success">Active</span></td><td><div class="action-btns"><button class="btn-icon-sm">✏️</button><button class="btn-icon-sm">👁</button></div></td></tr>
+                  <tr><td><strong>Dubai Holding</strong></td><td class="mono">100765432100003</td><td>accounts@dubaiholding.ae</td><td>Dubai</td><td class="mono">67</td><td><span class="badge badge-success">Active</span></td><td><div class="action-btns"><button class="btn-icon-sm">✏️</button><button class="btn-icon-sm">👁</button></div></td></tr>
+                  <tr><td><strong>Emaar Properties</strong></td><td class="mono">100654321000003</td><td>invoices@emaar.ae</td><td>Dubai</td><td class="mono">54</td><td><span class="badge badge-success">Active</span></td><td><div class="action-btns"><button class="btn-icon-sm">✏️</button><button class="btn-icon-sm">👁</button></div></td></tr>
+                  <tr><td><strong>ADNOC Distribution</strong></td><td class="mono">100543210900003</td><td>payments@adnoc.ae</td><td>Abu Dhabi</td><td class="mono">38</td><td><span class="badge badge-success">Active</span></td><td><div class="action-btns"><button class="btn-icon-sm">✏️</button><button class="btn-icon-sm">👁</button></div></td></tr>
+                  <tr><td><strong>Majid Al Futtaim</strong></td><td class="mono">100432109800003</td><td>ap@maf.ae</td><td>Dubai</td><td class="mono">31</td><td><span class="badge badge-warning">Pending TRN</span></td><td><div class="action-btns"><button class="btn-icon-sm">✏️</button><button class="btn-icon-sm">👁</button></div></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== ITEMS PAGE ========== -->
+        <div id="page-items" class="page">
+          <div class="page-header">
+            <div><h1>Items</h1><p class="text-muted">Manage product & service master data</p></div>
+            <div class="page-actions"><button class="btn btn-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Add Item</button></div>
+          </div>
+          <div class="card">
+            <div class="table-wrapper">
+              <table>
+                <thead><tr><th>Item Code</th><th>Description</th><th>Unit</th><th class="text-right">Price (AED)</th><th>VAT Category</th><th>Status</th><th>Actions</th></tr></thead>
+                <tbody>
+                  <tr><td class="mono">ITEM-001</td><td>Cloud ERP License - Annual</td><td>License</td><td class="text-right mono">12,000.00</td><td>Standard (5%)</td><td><span class="badge badge-success">Active</span></td><td><div class="action-btns"><button class="btn-icon-sm">✏️</button></div></td></tr>
+                  <tr><td class="mono">ITEM-002</td><td>Implementation Services</td><td>Hour</td><td class="text-right mono">450.00</td><td>Standard (5%)</td><td><span class="badge badge-success">Active</span></td><td><div class="action-btns"><button class="btn-icon-sm">✏️</button></div></td></tr>
+                  <tr><td class="mono">ITEM-003</td><td>Annual Support & Maintenance</td><td>Unit</td><td class="text-right mono">8,500.00</td><td>Standard (5%)</td><td><span class="badge badge-success">Active</span></td><td><div class="action-btns"><button class="btn-icon-sm">✏️</button></div></td></tr>
+                  <tr><td class="mono">ITEM-004</td><td>Training Workshop (per person)</td><td>Person</td><td class="text-right mono">1,200.00</td><td>Standard (5%)</td><td><span class="badge badge-success">Active</span></td><td><div class="action-btns"><button class="btn-icon-sm">✏️</button></div></td></tr>
+                  <tr><td class="mono">ITEM-005</td><td>Export Consulting Services</td><td>Hour</td><td class="text-right mono">650.00</td><td>Zero-Rated (0%)</td><td><span class="badge badge-success">Active</span></td><td><div class="action-btns"><button class="btn-icon-sm">✏️</button></div></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== REPORTS PAGE ========== -->
+        <div id="page-reports" class="page">
+          <div class="page-header">
+            <div><h1>Analytics & Reports</h1><p class="text-muted">Compliance reporting and business insights</p></div>
+            <div class="page-actions"><button class="btn btn-secondary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 10v3h12v-3M8 2v8M5 7l3 3 3-3" stroke="currentColor" stroke-width="1.5"/></svg> Export All</button></div>
+          </div>
+          <div class="reports-grid">
+            <div class="report-card" onclick="alert('Report: VAT Return Summary')"><div class="report-icon blue"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4z" stroke="currentColor" stroke-width="1.5"/><path d="M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.5"/></svg></div><h4>VAT Return Summary</h4><p class="text-muted">Periodic VAT return data for FTA filing</p></div>
+            <div class="report-card"><div class="report-icon teal"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 12h4M7 16h2M14 12h3M14 16h3" stroke="currentColor" stroke-width="1.5"/></svg></div><h4>Invoice Status Report</h4><p class="text-muted">Status breakdown of all invoices</p></div>
+            <div class="report-card"><div class="report-icon amber"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.5"/></svg></div><h4>Aging Analysis</h4><p class="text-muted">Receivables aging by 30/60/90 days</p></div>
+            <div class="report-card"><div class="report-icon green"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 20l5-7 4 3 5-8 4 5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></div><h4>Revenue Analytics</h4><p class="text-muted">Revenue trends and forecasting</p></div>
+            <div class="report-card"><div class="report-icon red"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3l9 18H3z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M12 10v4M12 17h.01" stroke="currentColor" stroke-width="1.5"/></svg></div><h4>Validation Errors</h4><p class="text-muted">Error frequency by validation rule</p></div>
+            <div class="report-card"><div class="report-icon blue"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/></svg></div><h4>Buyer Analysis</h4><p class="text-muted">Invoice volume and value by buyer</p></div>
+          </div>
+        </div>
+
+        <!-- ========== ARCHIVE PAGE ========== -->
+        <div id="page-archive" class="page">
+          <div class="page-header">
+            <div><h1>Archive</h1><p class="text-muted">7-year invoice retention as per UAE regulations</p></div>
+          </div>
+          <div class="card">
+            <div class="archive-stats">
+              <div class="archive-stat"><span class="archive-num">8,542</span><span class="text-muted">Archived Invoices</span></div>
+              <div class="archive-stat"><span class="archive-num">2024-2026</span><span class="text-muted">Date Range</span></div>
+              <div class="archive-stat"><span class="archive-num">AED 42.3M</span><span class="text-muted">Total Value</span></div>
+              <div class="archive-stat"><span class="archive-num">AES-256</span><span class="text-muted">Encryption</span></div>
+            </div>
+          </div>
+          <div class="card" style="margin-top:16px">
+            <div class="card-header"><h3>Archived Records</h3></div>
+            <div class="filter-bar" style="padding:0 0 16px 0">
+              <div class="search-input"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M11 11l3 3" stroke="currentColor" stroke-width="1.5"/></svg><input type="text" placeholder="Search archive..."></div>
+              <select class="filter-select"><option>All Years</option><option>2026</option><option>2025</option><option>2024</option></select>
+            </div>
+            <div class="table-wrapper">
+              <table>
+                <thead><tr><th>Invoice #</th><th>Date</th><th>Buyer</th><th class="text-right">Amount</th><th>Archived On</th><th>Actions</th></tr></thead>
+                <tbody>
+                  <tr><td class="mono">INV-2025-008542</td><td>31 Dec 2025</td><td>Emirates Trading LLC</td><td class="text-right mono">34,500.00</td><td>01 Jan 2026</td><td><button class="btn btn-ghost btn-sm">Retrieve</button></td></tr>
+                  <tr><td class="mono">INV-2025-008541</td><td>31 Dec 2025</td><td>Al Futtaim Group</td><td class="text-right mono">87,200.00</td><td>01 Jan 2026</td><td><button class="btn btn-ghost btn-sm">Retrieve</button></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== SETTINGS PAGE ========== -->
+        <div id="page-settings" class="page">
+          <div class="page-header"><div><h1>Settings</h1><p class="text-muted">Organization and system configuration</p></div></div>
+          <div class="settings-layout">
+            <div class="settings-nav">
+              <a class="settings-nav-item active">Organization</a>
+              <a class="settings-nav-item">Users & Roles</a>
+              <a class="settings-nav-item">API Integration</a>
+              <a class="settings-nav-item">ASP Configuration</a>
+              <a class="settings-nav-item">Notifications</a>
+              <a class="settings-nav-item">Billing</a>
+              <a class="settings-nav-item">Security</a>
+            </div>
+            <div class="settings-content">
+              <div class="card">
+                <h3>Organization Profile</h3>
+                <div class="form-grid-2">
+                  <div class="form-group"><label>Organization Name</label><input type="text" value="Techno Financials LLC"></div>
+                  <div class="form-group"><label>TRN</label><input type="text" value="100234567890003" class="mono" readonly></div>
+                  <div class="form-group"><label>Trade License</label><input type="text" value="DXB-123456"></div>
+                  <div class="form-group"><label>Emirate</label><select><option selected>Dubai</option></select></div>
+                  <div class="form-group full-width"><label>Address</label><input type="text" value="Business Bay, Tower A, Floor 12, Dubai, UAE"></div>
+                  <div class="form-group"><label>Primary Email</label><input type="email" value="admin@technofinancials.ae"></div>
+                  <div class="form-group"><label>Phone</label><input type="tel" value="+971 4 123 4567"></div>
+                </div>
+                <div style="margin-top:24px;display:flex;gap:12px;justify-content:flex-end">
+                  <button class="btn btn-secondary">Cancel</button>
+                  <button class="btn btn-primary">Save Changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CREDIT NOTES placeholder -->
+        <div id="page-credit-notes" class="page">
+          <div class="page-header"><div><h1>Credit Notes</h1><p class="text-muted">Issue and manage credit notes</p></div>
+            <div class="page-actions"><button class="btn btn-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> New Credit Note</button></div>
+          </div>
+          <div class="card empty-state">
+            <div class="empty-icon">📄</div>
+            <h3>No credit notes yet</h3>
+            <p class="text-muted">Credit notes will appear here when you issue them against accepted invoices.</p>
+            <button class="btn btn-primary">Issue Credit Note</button>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
